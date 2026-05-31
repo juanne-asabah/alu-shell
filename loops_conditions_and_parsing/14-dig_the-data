@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script groups, counts, and sorts Apache log visitors by IP and HTTP code
+
+awk '{print $1, $9}' apache-access.log | sort | uniq -c | sort -nr
+
