@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+ #Bash script is implementing a signal trap
+
  #Implement signal trap
    trap "echo 'I am invincible!!!'" SIGTERM
   while true; do
