@@ -1,5 +1,28 @@
 #!/usr/bin/env bash
-#I love you
-clean_up='RM /var/run/myscript.pid; exit $?'
+# Creates a PID file, prints a message indefinitely, and traps specific signals
 
-echo $$ > "/var/run/myscript.pid"
+# Write current Process ID (PID) to the required path
+echo "$$" > /var/run/myscript.pid
+
+# Clean up function for termination signals (SIGTERM and SIGQUIT)
+cleanup_term() {
+    echo "I hate the kill command"
+    rm -f /var/run/myscript.pid
+    exit 0
+}
+
+# Function for interruption signal (SIGINT / Ctrl+C)
+cleanup_int() {
+    echo "Y U no love me?!"
+}
+
+# Register traps to hook signals to their respective functions
+trap cleanup_term SIGTERM SIGQUIT
+trap cleanup_int SIGINT
+
+# Indefinite loop printing the required string
+while true; do
+    echo "To infinity and beyond"
+    sleep 1
+done
+		
