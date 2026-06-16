@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#I love you
+clean_up='RM /var/run/myscript.pid; exit $?'
+
+echo $$ > "/var/run/myscript.pid"

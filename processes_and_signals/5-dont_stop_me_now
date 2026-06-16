@@ -1,9 +1,3 @@
 #!/usr/bin/env bash
 # This script stops the 4-to_infinity_and_beyond process using the kill command
-   #Define process name
- PROCESS_NAME="4-to_infinity_and_beyond"
-   #Find process PID
- PID=$(pgrep -x "$PROCESS_NAME")
-   #Run kill if PID variable isn't empty
- [[ -n "$PID" ]] && kill $PID
-
+  killall 4-to_infinity_and_beyond 2>/dev/null || true	
